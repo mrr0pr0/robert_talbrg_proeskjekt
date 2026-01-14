@@ -115,3 +115,9 @@ Click "Run"
 The data will be inserted with proper foreign key references. If you need more guides, map markers, or different content, let me know!
 
 ### jeg ga den annon key siden den kan da lese av hva de forskjelige colomsene er selvom den sier den ikke gjør det
+
+
+
+## stechflow ai kan du legge koden din i også flytte og endre på komententer også be aien om å improve the layoyt så gjør den det og gri tilabke koden med det forbedet du må bare ha skreved global.css. 
+
+## pga vi ikke har hoved fokus på css lot jeg cursor ai med develupor som var får når man betaler som gjorde at den kunne nedre på css imens man så på siden. 

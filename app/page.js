@@ -42,7 +42,7 @@ export default function Home() {
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
           Game Selection
         </p>
-        <h2 className="text-3xl font-bold text-gradient-primary glow-red">
+        <h2 className="text-3xl font-bold text-gradient-gold glow-red">
           veiw guides & maps
         </h2>
         <p className="max-w-2xl text-sm text-muted-foreground">

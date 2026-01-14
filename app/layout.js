@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google"; // henter font fra google
 import "./globals.css";
 
@@ -24,33 +25,43 @@ export default function RootLayout({ children }) { // lager en RootLayout variab
       <body // lager en body variabel
         className={`${geistSans.variable} ${geistMono.variable} antialiased`} // setter variabelen til geistSans og geistMono
       >
-        <div className="min-h-screen bg-[radial-gradient(circle_at_top,_hsl(var(--primary)/0.15),_transparent_55%),_radial-gradient(circle_at_bottom,_hsl(var(--primary)/0.2),_hsl(var(--background))_60%)]">
-          <div className="mx-auto flex h-screen max-w-6xl gap-4 px-4 py-4"> 
+        <div className="min-h-screen bg-[radial-gradient(circle_at_top,_hsl(var(--primary)/0.15),_transparent_55%),_radial-gradient(circle_at_bottom,_hsl(var(--primary)/0.2),_hsl(var(--background))_60%)]"> {/* dette er skrevet med stechflow ai*/}
+          <div className="mx-auto flex h-screen max-w-6xl gap-4 px-4 py-4"> {/*dette er skrevet med stechflow ai*/} 
             {/* layout fra skisse */}
-            <aside className="glass flex w-64 flex-col justify-between rounded-xl p-4">
+            <aside className="glass flex w-64 flex-col justify-between rounded-xl p-4"> {/*dette er skrevet stechflow ai*/}
               <div className="space-y-6">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
-                    game guides
-                  </p>
-                  <h1 className="mt-2 text-xl font-bold text-gradient-primary glow-red-sm">
+                  <Link // link burkes i next.js react istenfor button on press så herf pga det er bedre med flow av prugrammet.
+                    href="/"
+                    className="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground hover:underline focus:outline-none" // dette er skrevet med stechflow ai
+                  >
+                    game guides 
+                  </Link>
+                  
+                  <h1 className="mt-2 text-xl font-bold text-gradient-gold glow-red-sm"> {/*dette er skrevet med stetchflow ai */}
                     veiw games
                   </h1>
                 </div>
 
-                <nav className="space-y-2 text-sm text-muted-foreground">
+                <nav className="space-y-2 text-sm text-muted-foreground"> {/*dette er skrevet med stechflow ai*/}
                   <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground/70">
                     Where do you want to go?
                   </p>
                   <ul className="space-y-1">
                     <li className="rounded-md bg-secondary/70 px-3 py-2 text-foreground">
-                      All games
-                    </li>                  
-                    <li className="rounded-md px-3 py-2 hover:bg-secondary/60">
-                      Guides for a specific game
+                      <Link href="/" className="block w-full">
+                        All games
+                      </Link>
                     </li>
                     <li className="rounded-md px-3 py-2 hover:bg-secondary/60">
-                      Interactive Map for a specific game
+                      <Link href="/maps" className="block w-full">
+                        view Interactive maps
+                      </Link>
+                    </li>
+                    <li className="rounded-md px-3 py-2 hover:bg-secondary/60">
+                      <Link href="/guides" className="block w-full">
+                        view text guides
+                      </Link>
                     </li>
                   </ul>
                 </nav>
@@ -69,3 +80,6 @@ export default function RootLayout({ children }) { // lager en RootLayout variab
     </html>
   );
 }
+
+
+// alde de andre gulle er også laget med stechflow ai. står hvordan i readMe.md
