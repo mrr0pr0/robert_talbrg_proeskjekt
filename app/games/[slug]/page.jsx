@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"; // react hooks
 import { useParams } from "next/navigation"; // henter url-parametre
+import Link from "next/link";
 import dynamic from "next/dynamic"; // dynamisk import
 import { supabase } from "../../../lib/supabaseClient"; // supabase-klient
 
@@ -28,9 +29,10 @@ function GuidesList({ guides }) { // liste med tekst-guider
   return (
     <div className="space-y-3">
       {guides.map((guide) => ( // render én artikkel per guide
-        <article
+        <Link
           key={guide.id}
-          className="glass-hover rounded-lg border border-border/60 bg-secondary/70 p-3 text-sm"
+          href={`/guides/${guide.id}`}
+          className="block rounded-lg border border-border/60 bg-secondary/70 p-3 text-sm transition-colors hover:border-primary/40"
         >
           <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             {guide.category || "Guide"}
@@ -43,7 +45,7 @@ function GuidesList({ guides }) { // liste med tekst-guider
               {guide.summary}
             </p>
           )}
-        </article>
+        </Link>
       ))}
     </div>
   );

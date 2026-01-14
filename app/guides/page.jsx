@@ -87,7 +87,7 @@ export default function GuidesOverviewPage() {
           return (
             <Link
               key={guide.id}
-              href={game?.slug ? `/games/${game.slug}` : "#"}
+              href={`/guides/${guide.id}`}
               className="group glass-hover block rounded-lg border border-border/60 bg-secondary/70 p-4 text-sm"
             >
               <div className="flex items-start justify-between gap-3">

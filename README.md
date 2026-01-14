@@ -1,29 +1,45 @@
 
+## Development
+
 ```bash
-
-pnpm dev
-
+pnpm build
+pnpm start
 ```
 
+---
 
+## Bildereferanser (Image Sources)
 
-Kilder på bilder er
-https://www.reddit.com/r/residentevil/comments/12dhewd/map_of_leons_route_through_village_chapters_16_of/
-https://eldenring.wiki.fextralife.com/Interactive+Map
+- `https://www.reddit.com/r/residentevil/comments/12dhewd/map_of_leons_route_through_village_chapters_16_of/`
+- `https://eldenring.wiki.fextralife.com/Interactive+Map`
 
-AI bruk på alt infromajson om de forksjelige spillene dette gjorde jeg for å spare tid med at det ikke viser komentanse med å kunne skrive om de forjselige spillenede 
+---
 
+## AI‑bruk (Use of AI)
 
-## promt
+AI ble brukt til **all informasjon om de forskjellige spillene**.  
+Dette ble gjort for å spare tid, og betyr at teksten ikke viser egen kompetanse på å skrive beskrivelser av spillene.
 
+---
+
+## Prompt til SQL‑generering (RE4R)
+
+**Original prompt:**
+
+```text
 fill this talbe with the game re4r not image link; eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdpZmhiY2p1amxsYXF6d25vcGZ1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2ODM3Mjg4NiwiZXhwIjoyMDgzOTQ4ODg2fQ.JFPEO-0oabwYIscGczCKIIOHDU0A7wKoO9ZidXVKRBE
+```
 
-9:50 AM
-I can't use that service role key directly in this conversation for security reasons - it's a sensitive credential that should be kept private. However, I can help you create INSERT statements to populate your tables with Resident Evil 4 Remake data!
+**Tidspunkt:** 9:50 AM  
+AI‑responsen forklarte at service role‑nøkkelen ikke kunne brukes direkte i samtalen av sikkerhetsgrunner, men at det var mulig å generere `INSERT`‑setninger for Resident Evil 4 Remake (RE4R).
 
-Here's SQL to insert RE4R data into your tables:
+---
 
-sql
+## SQL‑kode for å legge inn RE4R‑data
+
+Nedenfor er SQL‑skriptet som ble generert for å sette inn RE4R‑data i tabellene.
+
+```sql
 -- Insert the game
 INSERT INTO public.games (slug, title, subtitle, short_description, description, release_year)
 VALUES (
@@ -66,7 +82,6 @@ VALUES
   3
 );
 
-
 -- Insert some map markers (replace YOUR_GAME_ID)
 INSERT INTO public.map_markers (game_id, label, description, category, x_percent, y_percent, order_index)
 VALUES
@@ -106,18 +121,44 @@ VALUES
   61.500,
   4
 );
-To run this:
+```
 
-Go to your Supabase Dashboard
-Navigate to SQL Editor
-Paste this SQL
-Click "Run"
-The data will be inserted with proper foreign key references. If you need more guides, map markers, or different content, let me know!
+**Slik kjører du dette:**
+
+1. Gå til Supabase Dashboard  
+2. Naviger til **SQL Editor**  
+3. Lim inn SQL‑koden over  
+4. Klikk **"Run"**  
+
+Dataene vil bli satt inn med riktige foreign key‑referanser. Om du trenger flere guider, kartmarkører eller annet innhold, kan det utvides på samme måte.
+
+---
+
+## Notater om nøkkelbruk
 
 ### jeg ga den annon key siden den kan da lese av hva de forskjelige colomsene er selvom den sier den ikke gjør det
 
+---
 
+## Stechflow AI
 
-## stechflow ai kan du legge koden din i også flytte og endre på komententer også be aien om å improve the layoyt så gjør den det og gri tilabke koden med det forbedet du må bare ha skreved global.css. 
+`stechflow ai` kan du legge koden din i, flytte og endre på kommentarer, og be AI‑en om å **improve the layout**.  
+Da gjør den det og gir tilbake koden med det forbedret. Du må bare ha skrevet `global.css`.
 
-## pga vi ikke har hoved fokus på css lot jeg cursor ai med develupor som var får når man betaler som gjorde at den kunne nedre på css imens man så på siden. 
+---
+
+## CSS‑fokus og Cursor AI
+
+På grunn av at hovedfokuset ikke er på CSS, ble **Cursor AI med Developer‑funksjonen** brukt til å justere CSS mens man så på siden.  
+Dette gjorde at layout og styling kunne forbedres raskt uten at prosjektet trengte detaljert manuell CSS‑utvikling.
+
+---
+
+## SQL‑prompt fra ChatGPT
+
+sql promt form chat gpt  
+`https://chatgpt.com/share/69678b36-b42c-800c-9fce-f768f0f80d48`
+
+## skrevet i curosor pro version
+
+dette har vært gjort med autocomplete av linjer med curosr men jeg har lest gjenom og forstårr før jeg har trykket på tab. Nesten alt av teskt er skrevet med ai på siden pga min spårk er så dårlig og jeg orket ikke å skriv det. 

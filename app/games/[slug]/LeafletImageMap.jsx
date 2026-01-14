@@ -27,8 +27,6 @@ function ClampToImageBounds() {
   useEffect(() => {
     // Lås kartet til bildet slik at du ikke kan zoome/panne "utenfor"
     map.setMaxBounds(BOUNDS);
-    map.options.maxBoundsViscosity = 1.0; // 1.0 = hard stopp ved kanten
-
     // Fit bildet inn i view på start, og bruk samme zoom som minZoom (så zoom-out stopper der)
     map.fitBounds(BOUNDS, { animate: false });
     const computedMinZoom = map.getBoundsZoom(BOUNDS, true);
