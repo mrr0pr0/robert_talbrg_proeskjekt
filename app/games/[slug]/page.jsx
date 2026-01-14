@@ -66,7 +66,9 @@ function InteractiveMap({ game, markers }) { // wrapper rundt kartet
         </p>
       </div>
 
-      <div className="relative flex-1 overflow-hidden rounded-lg border border-border/60 bg-secondary min-h-[260px]">
+      {/* Fast 16:9-forhold gjør at kartet ser mindre "strukket" ut og holder en
+          mer naturlig høyde uansett skjermstørrelse. */}
+      <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-border/60 bg-secondary">
         <LeafletImageMap game={game} markers={markers} />{/* selve kart-komponenten */}
       </div>
     </div>

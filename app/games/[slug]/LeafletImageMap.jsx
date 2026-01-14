@@ -70,6 +70,7 @@ export default function LeafletImageMap({ game, markers }) { // kart-komponent f
         maxZoom={8} // maks zoom inn (må være > minZoom for at zoom skal fungere)
         center={[50, 50]} // initial posisjon (overskrives av fitBounds)
         zoom={0} // initial zoom (overskrives av fitBounds/minZoom)
+        // Fyll containeren helt – høyden styres av parent (aspect-video)
         style={{ width: "100%", height: "100%" }} // fyller container
         zoomControl={true} // viser zoom-knapper
         scrollWheelZoom={true} // tillat zoom med mus/trackpad

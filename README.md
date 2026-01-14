@@ -9,7 +9,7 @@ pnpm dev
 
 Kilder på bilder er
 https://www.reddit.com/r/residentevil/comments/12dhewd/map_of_leons_route_through_village_chapters_16_of/
-
+https://eldenring.wiki.fextralife.com/Interactive+Map
 
 AI bruk på alt infromajson om de forksjelige spillene dette gjorde jeg for å spare tid med at det ikke viser komentanse med å kunne skrive om de forjselige spillenede 
 
