@@ -31,8 +31,11 @@ function ClampToImageBounds() {
 
     // Fit bildet inn i view på start, og bruk samme zoom som minZoom (så zoom-out stopper der)
     map.fitBounds(BOUNDS, { animate: false });
-    const minZoom = map.getBoundsZoom(BOUNDS, true);
-    map.setMinZoom(minZoom);
+    const computedMinZoom = map.getBoundsZoom(BOUNDS, true);
+    const currentMaxZoom = typeof map.getMaxZoom === "function" ? map.getMaxZoom() : undefined;
+    const safeMaxZoom = Number.isFinite(currentMaxZoom) ? currentMaxZoom : 8;
+    const safeMinZoom = Math.min(computedMinZoom, safeMaxZoom - 1);
+    map.setMinZoom(safeMinZoom);
     map.setMaxBounds(BOUNDS); // re-apply etter minZoom for safety
   }, [map]);
 
@@ -64,11 +67,12 @@ export default function LeafletImageMap({ game, markers }) { // kart-komponent f
         bounds={BOUNDS} // bruker 0–100-grenser
         maxBounds={BOUNDS} // hindrer pan utenfor kartet
         maxBoundsViscosity={1.0} // "hard" stopp ved kanten
-        maxZoom={4} // maks zoom inn
+        maxZoom={8} // maks zoom inn (må være > minZoom for at zoom skal fungere)
         center={[50, 50]} // initial posisjon (overskrives av fitBounds)
         zoom={0} // initial zoom (overskrives av fitBounds/minZoom)
         style={{ width: "100%", height: "100%" }} // fyller container
         zoomControl={true} // viser zoom-knapper
+        scrollWheelZoom={true} // tillat zoom med mus/trackpad
       >{/* start kart */}
         <ClampToImageBounds />
         <ImageOverlay url={game.map_image_url} bounds={BOUNDS} />{/* legger bildet på kartet */}
