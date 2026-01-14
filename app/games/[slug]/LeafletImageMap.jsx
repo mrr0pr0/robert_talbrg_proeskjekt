@@ -1,11 +1,12 @@
 "use client"; // klient-komponent i Next.js
 
-import { MapContainer, ImageOverlay, Marker, Popup } from "react-leaflet"; // kart-komponenter fra react-leaflet
+import { MapContainer, ImageOverlay, Marker, Popup, useMap } from "react-leaflet"; // kart-komponenter fra react-leaflet
 import L from "leaflet"; // hovedbiblioteket Leaflet
 import "leaflet/dist/leaflet.css"; // css for Leaflet-kartet
 import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png"; // ikon (retina)
 import iconUrl from "leaflet/dist/images/marker-icon.png"; // vanlig ikon
 import shadowUrl from "leaflet/dist/images/marker-shadow.png"; // skygge til ikon
+import { useEffect } from "react";
 
 // fikser standard ikon i Next.js
 L.Icon.Default.mergeOptions({
@@ -19,6 +20,24 @@ const BOUNDS = [
   [0, 0], // venstre / topp
   [100, 100], // høyre / nederst
 ];
+
+function ClampToImageBounds() {
+  const map = useMap();
+
+  useEffect(() => {
+    // Lås kartet til bildet slik at du ikke kan zoome/panne "utenfor"
+    map.setMaxBounds(BOUNDS);
+    map.options.maxBoundsViscosity = 1.0; // 1.0 = hard stopp ved kanten
+
+    // Fit bildet inn i view på start, og bruk samme zoom som minZoom (så zoom-out stopper der)
+    map.fitBounds(BOUNDS, { animate: false });
+    const minZoom = map.getBoundsZoom(BOUNDS, true);
+    map.setMinZoom(minZoom);
+    map.setMaxBounds(BOUNDS); // re-apply etter minZoom for safety
+  }, [map]);
+
+  return null;
+}
 
 export default function LeafletImageMap({ game, markers }) { // kart-komponent for ett spill
   if (!game?.map_image_url) { // hvis ingen kart-url, vis beskjed
@@ -43,11 +62,15 @@ export default function LeafletImageMap({ game, markers }) { // kart-komponent f
         key={game?.id || game?.slug || "leaflet-image-map"} // tvinger remount når spill endres
         crs={L.CRS.Simple} // enkelt koordinatsystem for bilde
         bounds={BOUNDS} // bruker 0–100-grenser
-        minZoom={-1} // kan zoome litt ut
+        maxBounds={BOUNDS} // hindrer pan utenfor kartet
+        maxBoundsViscosity={1.0} // "hard" stopp ved kanten
         maxZoom={4} // maks zoom inn
+        center={[50, 50]} // initial posisjon (overskrives av fitBounds)
+        zoom={0} // initial zoom (overskrives av fitBounds/minZoom)
         style={{ width: "100%", height: "100%" }} // fyller container
         zoomControl={true} // viser zoom-knapper
       >{/* start kart */}
+        <ClampToImageBounds />
         <ImageOverlay url={game.map_image_url} bounds={BOUNDS} />{/* legger bildet på kartet */}
 
         {markerPositions.map((marker) => ( // render alle markører
