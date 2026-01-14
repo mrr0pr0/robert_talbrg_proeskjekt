@@ -1,34 +1,34 @@
-"use client";
+ "use client";
 
-import { useEffect, useState } from "react"; //henter react components
-import Link from "next/link"; // henter link component
-import { supabase } from "../lib/supabaseClient"; // henter supabase client
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { supabase } from "../lib/supabaseClient";
 
-export default function Home() { // hovedkomponenten for home siden med å lage en liste av spill fra supabase
-  const [games, setGames] = useState([]); // state for spillene
-  const [loading, setLoading] = useState(true); // state for loading
-  const [error, setError] = useState(null); // state for feil
+export default function Home() {
+  const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function loadGames() { // funksjon for å laste spillene fra supabase
+    async function loadGames() {
       if (!supabase) {
-        setError("Supabase is not configured yet."); // setter feilmelding hvis supabase ikke er konfigurert
-        setLoading(false); // setter loading til false
-        return; // returner hvis supabase ikke er konfigurert
+        setError("Something went wrong. Please try again later.");
+        setLoading(false);
+        return;
       }
 
-      const { data, error } = await supabase // henter spillene fra supabase
+      const { data, error } = await supabase
         .from("games")
         .select(
-          "id, slug, title, short_description, cover_image_url, release_year" // henter spillene fra supabase
+          "id, slug, title, short_description, cover_image_url, release_year"
         )
-        .order("title", { ascending: true }); // sorter spillene etter tittel
+        .order("title", { ascending: true });
 
-      if (error) { // hvis det er en feil
+      if (error) {
         console.error(error);
-        setError("Failed to load games from Supabase.");
+        setError("Could not load games. Please try again later.");
       } else {
-        setGames(data || []); // settes spillene til data
+        setGames(data || []);
       }
       setLoading(false);
     }
@@ -46,16 +46,14 @@ export default function Home() { // hovedkomponenten for home siden med å lage 
           Choose a game to view guides & maps
         </h2>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          This hub lists all games stored in your Supabase{" "}
-          <span className="font-mono text-foreground/90">games</span> table.
-          Selecting a game opens a layout similar to the RE4 guide with
-          sections for guides and an interactive map.
+          Browse the available games and open detailed guides with interactive
+          maps, tips and useful information for each title.
         </p>
       </header>
 
       {loading && (
         <div className="glass flex items-center justify-center rounded-lg p-6 text-sm text-muted-foreground">
-          Loading games from Supabase...
+          Loading games...
         </div>
       )}
 
@@ -67,9 +65,7 @@ export default function Home() { // hovedkomponenten for home siden med å lage 
 
       {!loading && !error && games.length === 0 && (
         <div className="glass rounded-lg p-6 text-sm text-muted-foreground">
-          No games found yet. Add rows to your{" "}
-          <span className="font-mono text-foreground/90">games</span> table in
-          Supabase and refresh this page.
+          No games are available right now. Please check back later.
         </div>
       )}
 
