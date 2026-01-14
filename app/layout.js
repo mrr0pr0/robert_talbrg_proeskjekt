@@ -31,29 +31,26 @@ export default function RootLayout({ children }) { // lager en RootLayout variab
               <div className="space-y-6">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-muted-foreground">
-                    Game Guides
+                    game guides
                   </p>
                   <h1 className="mt-2 text-xl font-bold text-gradient-primary glow-red-sm">
-                    Multi Game Hub
+                    veiw games
                   </h1>
                 </div>
 
                 <nav className="space-y-2 text-sm text-muted-foreground">
                   <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground/70">
-                    Sections
+                    Where do you want to go?
                   </p>
                   <ul className="space-y-1">
                     <li className="rounded-md bg-secondary/70 px-3 py-2 text-foreground">
-                      All Games
+                      All games
+                    </li>                  
+                    <li className="rounded-md px-3 py-2 hover:bg-secondary/60">
+                      Guides for a specific game
                     </li>
                     <li className="rounded-md px-3 py-2 hover:bg-secondary/60">
-                      Selected Game
-                    </li>
-                    <li className="rounded-md px-3 py-2 hover:bg-secondary/60">
-                      Guides
-                    </li>
-                    <li className="rounded-md px-3 py-2 hover:bg-secondary/60">
-                      Interactive Map
+                      Interactive Map for a specific game
                     </li>
                   </ul>
                 </nav>

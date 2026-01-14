@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     async function loadGames() {
       if (!supabase) {
-        setError("Something went wrong. Please try again later.");
+        setError("error loading games");
         setLoading(false);
         return;
       }
@@ -26,7 +26,7 @@ export default function Home() {
 
       if (error) {
         console.error(error);
-        setError("Could not load games. Please try again later.");
+        setError("error loading games");
       } else {
         setGames(data || []);
       }
@@ -43,17 +43,16 @@ export default function Home() {
           Game Selection
         </p>
         <h2 className="text-3xl font-bold text-gradient-primary glow-red">
-          Choose a game to view guides & maps
+          veiw guides & maps
         </h2>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          Browse the available games and open detailed guides with interactive
-          maps, tips and useful information for each title.
+          look at the games and guides for each game with Interactive maps
         </p>
       </header>
 
       {loading && (
         <div className="glass flex items-center justify-center rounded-lg p-6 text-sm text-muted-foreground">
-          Loading games...
+          loading games...
         </div>
       )}
 
@@ -65,10 +64,10 @@ export default function Home() {
 
       {!loading && !error && games.length === 0 && (
         <div className="glass rounded-lg p-6 text-sm text-muted-foreground">
-          No games are available right now. Please check back later.
+          No games 
         </div>
       )}
-
+  
       <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
         {games.map((game) => (
           <Link
