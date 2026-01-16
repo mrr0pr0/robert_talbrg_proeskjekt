@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google"; // henter font fra google
 import "./globals.css";
+import AuthHeader from "./components/AuthHeader"; // importerer AuthHeader fra ./components/AuthHeader
 
 const geistSans = Geist({ // lager en geistSans variabel
   variable: "--font-geist-sans", // setter variabelen til geistSans
@@ -72,6 +73,9 @@ export default function RootLayout({ children }) { // lager en RootLayout variab
 
             {/* Main content */}
             <main className="glass relative flex-1 overflow-y-auto rounded-xl p-6">
+              <div className="mb-6 flex items-center justify-end">
+                <AuthHeader />
+              </div>
               {children}
             </main>
           </div>

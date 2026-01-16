@@ -18,7 +18,7 @@ pnpm start
 ## AI‑bruk (Use of AI)
 
 AI ble brukt til **all informasjon om de forskjellige spillene**.  
-Dette ble gjort for å spare tid, og betyr at teksten ikke viser egen kompetanse på å skrive beskrivelser av spillene.
+Dette ble gjort for å spare tid, og betyr at teksten ikke viser egen kompetanse på å skrive beskrivelser av spillene. alt av tekst er også skrevet ai på nettsiden dette er for å spare tid siden jeg hadde ikke tid til alt på planenen hvis jeg også skulle dokumentere
 
 ---
 
@@ -162,3 +162,7 @@ sql promt form chat gpt
 ## skrevet i curosor pro version
 
 dette har vært gjort med autocomplete av linjer med curosr men jeg har lest gjenom og forstårr før jeg har trykket på tab. Nesten alt av teskt er skrevet med ai på siden pga min spårk er så dårlig og jeg orket ikke å skriv det. 
+
+## tidsberening ##
+
+jeg rakk alt på plannen men jeg hadde ikke rekket det hvis jeg måtte levere på ondsdag så hadde jeg ikke rekket det siden jeg trodde ikek vi skulle gjøre dette skole realtert så jeg satt ikke at tid til å lage readme eller komentere koden siden dette tar evighetster med tid. men på ferdag så fikk jeg skrevet ferdig readme filen og komenert page.js som jeg fikk litt dårlgi tid til. jeg snakket ikek med noen siden jeg regnet med at det var ikek mye de kunne si som kunne forbedres pga rt tar så lang tid å endre små ting i react. 

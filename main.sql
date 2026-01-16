@@ -66,3 +66,65 @@ create policy "Public read map_markers"
   on public.map_markers
   for select
   using (true);
+
+-- =========================================================
+-- Simple app auth (SHA-256 hashed password) via RPC
+-- NOTE: This is NOT Supabase Auth; it's a minimal custom login.
+-- Client hashes password with SHA-256 and calls the RPC functions.
+-- =========================================================
+
+create table if not exists public.app_users (
+  id uuid primary key default gen_random_uuid(),
+  username text not null unique,
+  password_hash text not null,
+  created_at timestamptz not null default now()
+);
+
+alter table public.app_users enable row level security;
+
+-- Do not allow direct reads/writes from anon; use RPC instead.
+revoke all on table public.app_users from anon, authenticated;
+
+-- Create a user (sign up). Returns the new user id.
+create or replace function public.create_user(
+  p_username text,
+  p_password_hash text
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  v_id uuid;
+begin
+  insert into public.app_users (username, password_hash)
+  values (p_username, p_password_hash)
+  returning id into v_id;
+
+  return v_id;
+exception
+  when unique_violation then
+    raise exception 'username_taken';
+end;
+$$;
+
+-- Verify login. Returns user id if match, otherwise NULL.
+create or replace function public.verify_login(
+  p_username text,
+  p_password_hash text
+)
+returns uuid
+language sql
+security definer
+set search_path = public
+as $$
+  select id
+  from public.app_users
+  where username = p_username
+    and password_hash = p_password_hash
+  limit 1;
+$$;
+
+grant execute on function public.create_user(text, text) to anon, authenticated;
+grant execute on function public.verify_login(text, text) to anon, authenticated;
