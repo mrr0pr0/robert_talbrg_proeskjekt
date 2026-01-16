@@ -6,6 +6,8 @@ pnpm build
 pnpm start
 ```
 
+# deplyed on need a open wifi #
+https://eg80og4so08kwgo0c4cgwook.cool.ropro.no/
 ---
 
 ## Bildereferanser (Image Sources)
