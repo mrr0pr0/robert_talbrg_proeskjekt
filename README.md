@@ -166,3 +166,8 @@ dette har vært gjort med autocomplete av linjer med curosr men jeg har lest gje
 ## tidsberening ##
 
 jeg rakk alt på plannen men jeg hadde ikke rekket det hvis jeg måtte levere på ondsdag så hadde jeg ikke rekket det siden jeg trodde ikek vi skulle gjøre dette skole realtert så jeg satt ikke at tid til å lage readme eller komentere koden siden dette tar evighetster med tid. men på ferdag så fikk jeg skrevet ferdig readme filen og komenert page.js som jeg fikk litt dårlgi tid til. jeg snakket ikek med noen siden jeg regnet med at det var ikek mye de kunne si som kunne forbedres pga rt tar så lang tid å endre små ting i react. jeg rakk akruratt å lage auth men ikke debugge den helt ferdig men jeg har skrevet det før så jeg regnet veldig med at det fungerer jeg har kommenrt den og jeg så ingen feil.  
+
+
+## css ##
+
+siden det ikek var hovedfokus på css brukte så tok jeg mye av globall.css med css fra andre porsjekter som jeg har skrevet selv.
