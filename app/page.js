@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"; // importerer useEffect og useState fra react
 import Link from "next/link"; // importerer Link fra next/link
 import { supabase } from "../lib/supabaseClient"; // importerer supabase fra ../lib/supabaseClient
+import image from "next/image"
 
 export default function Home() {
   const [games, setGames] = useState([]); // lagrer spillene i state
@@ -78,7 +79,7 @@ export default function Home() {
             <div className="relative aspect-video w-full overflow-hidden">
               {game.cover_image_url ? (
                 // elslint for å skjule advarsel om img element
-                <img
+                <img // du må bruke Image element i stedet for img element for å laste bilder bedre med at ud må da improtere next image men jeg rakk ikke å gjøre det selvom det er kort pga auth og jeg fortso ikke next.js feilen jeg fikk. 
                   src={game.cover_image_url}
                   alt={game.title}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-110"
